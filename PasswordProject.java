@@ -2,15 +2,15 @@ import java.io.*;
 import java.util.*;
 class PasswordProject {
      public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("1- Register");
         System.out.println("2- Login");
         System.out.print("Choose: ");
-        int choice = scan.nextInt();
-        scan.nextLine();
+        int choice = sc.nextInt();
+        sc.nextLine();
          System.out.print("Username: ");
-        String username = scan.nextLine();
+        String username = sc.nextLine();
 
         if (choice == 1) {
              System.out.println("\nPassword must follow these rules:");
@@ -24,7 +24,7 @@ class PasswordProject {
             boolean valid = false;
              for (int i = 3; i > 0; i--) {
                 System.out.print("Enter password (" + i + " attempts left): ");
-                password = scan.nextLine();
+                password = sc.nextLine();
 
                 if (!password.toLowerCase().contains(username.toLowerCase()) &&
                     password.length() >= 8 && password.length() <= 15 &&
@@ -38,7 +38,7 @@ class PasswordProject {
                 System.out.println("Password does not meet the requirements.");
             }
 
-            if (!valid) { System.out.println("Too many failed attempts."); return; }
+            if (!valid) { System.out.println("many failed attempts."); return; }
 
             System.out.println("Password is valid.");
 
@@ -54,7 +54,7 @@ class PasswordProject {
             else System.out.println("Strength: Strong");
 
             System.out.print("Confirm password: ");
-            String confirm = scan.nextLine();
+            String confirm = sc.nextLine();
             if (!confirm.equals(password)) {
                 System.out.println("Passwords do not match."); return;
             }
@@ -69,7 +69,7 @@ class PasswordProject {
 
             for (int i = 3; i > 0; i--) {
                 System.out.print("Password (" + i + " attempts left): ");
-                String password = scan.nextLine();
+                String password = sc.nextLine();
 
                 File file = new File("users.txt");
                 if (!file.exists()) { System.out.println("No users found."); return; }
@@ -88,9 +88,11 @@ class PasswordProject {
             }
 
             if (found) System.out.println("Login successful! Welcome " + username);
-            else System.out.println("Too many failed attempts.");
+            else System.out.println("Many failed attempts.");
         }
 
-        scan.close();
+        sc.close();
+    }
+}
     }
 }
